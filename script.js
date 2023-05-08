@@ -1,22 +1,22 @@
 const questions = [{
     question : "What is Amelia Watson's Pet Dog Called?",
-    answers : [{text : "Yubi", correct : false}, {text : "Bubba", correct : true}, {text : "Tako", correct : false}, {text : "Ganmo", correct : false}]
-
+    answers : [{text : "Yubi", correct : false}, {text : "Bubba", correct : true}, {text : "Tako", correct : false}, {text : "Ganmo", correct : false}],
+    image : "./bubba.jpg"
 },
 {
     question : "Finish the quote : 'Ogey, ____'.",
-    answers : [{text : "rrat", correct : true}, {text : "peko", correct : false}, {text : "bud", correct : false}, {text : "let's go", correct : false}]
-
+    answers : [{text : "rrat", correct : true}, {text : "peko", correct : false}, {text : "bud", correct : false}, {text : "let's go", correct : false}],
+    image : "./ogey.jpg"
 },
 {
     question : "What was the first thing Gura said on her debut stream?",
-    answers : [{text : "'Sh*t...'", correct : false}, {text : "'Wait guys i'm lagging.'", correct : false}, {text : "'Heya guys, it's Gawr Gura!'", correct : false}, {text : "'a'", correct : true}]
-
+    answers : [{text : "'Sh*t...'", correct : false}, {text : "'Wait guys i'm lagging.'", correct : false}, {text : "'Heya guys, it's Gawr Gura!'", correct : false}, {text : "'a'", correct : true}],
+    image : "./gura.jpg"
 },
 {
     question : "How many active hololive talents are there currently? (Not including retired talents)",
-    answers : [{text : "60", correct : false}, {text : "75", correct : true}, {text : "52", correct : false}, {text : "46", correct : false}]
-
+    answers : [{text : "60", correct : false}, {text : "75", correct : true}, {text : "52", correct : false}, {text : "46", correct : false}],
+    image : "./hololivetalents.webp"
 }
 ];
 
@@ -42,6 +42,7 @@ const showQuestion = () => {
     let currentQuestion = questions[currentQuestionIndex]; //get object at index of questions array
     let questionNo = currentQuestionIndex + 1; //question number starting at 1
     questionElement.innerHTML = questionNo + ". " + currentQuestion.question; //set text of h2 question element
+    document.getElementById("question-img").src = currentQuestion.image; //change image for each question, referencing the current img tag
 
     //display answers by mapping through the current object's answers array and for each index, create a button that displays the answer
     currentQuestion.answers.forEach((answer) => {
@@ -59,7 +60,7 @@ const showQuestion = () => {
     })
 }
 
-//function to remove placeholder buttons (I think a easier way is to just delete them from html)
+//function to remove placeholder buttons (I think a easier way is to just delete them from html initially)
 const resetState = () => {
     nextButton.style.display = "none";
     while(answerButton.firstChild){ //while there are first child's left in our answer-buttons div
@@ -120,7 +121,7 @@ const handleNextButton = () => {
 
 //displays after the last question
 const showScore = () => {
-    while(answerButton.firstChild){
+    while(answerButton.firstChild){ //remove all buttons from answer-buttons div
         answerButton.removeChild(answerButton.firstChild);
     }
 
