@@ -1,28 +1,29 @@
 const questions = [{
     question : "What is Amelia Watson's Pet Dog Called?",
     answers : [{text : "Yubi", correct : false}, {text : "Bubba", correct : true}, {text : "Tako", correct : false}, {text : "Ganmo", correct : false}],
-    image : "./bubba.jpg"
+    image : "/images/bubba.jpg"
 },
 {
     question : "Finish the quote : 'Ogey, ____'.",
     answers : [{text : "rrat", correct : true}, {text : "peko", correct : false}, {text : "bud", correct : false}, {text : "let's go", correct : false}],
-    image : "./ogey.jpg"
+    image : "/images/ogey.jpg"
 },
 {
     question : "What was the first thing Gura said on her debut stream?",
     answers : [{text : "'Sh*t...'", correct : false}, {text : "'Wait guys i'm lagging.'", correct : false}, {text : "'Heya guys, it's Gawr Gura!'", correct : false}, {text : "'a'", correct : true}],
-    image : "./gura.jpg"
+    image : "/images/gura.jpg"
 },
 {
     question : "How many active hololive talents are there currently? (Not including retired talents)",
     answers : [{text : "60", correct : false}, {text : "75", correct : true}, {text : "52", correct : false}, {text : "46", correct : false}],
-    image : "./hololivetalents.webp"
+    image : "/images/hololivetalents.webp"
 }
 ];
 
 const questionElement = document.getElementById("question");
 const answerButton = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
+const imageElement = document.getElementById("question-img");
 
 let currentQuestionIndex = 0; //keeps track of which question we are currently at
 let score = 0; //keeps track of score
@@ -32,6 +33,7 @@ const startQuiz = () => {
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Next";
+    imageElement.style.display = "block"
     showQuestion(); 
 }
 
@@ -124,6 +126,9 @@ const showScore = () => {
     while(answerButton.firstChild){ //remove all buttons from answer-buttons div
         answerButton.removeChild(answerButton.firstChild);
     }
+
+    //hide image
+    imageElement.style.display = "none";
 
     //change question text to score text
     questionElement.innerHTML = `You got ${score} out of ${questions.length} questions correct.`;
