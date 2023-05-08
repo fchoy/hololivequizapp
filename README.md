@@ -1,0 +1,1 @@
+Quiz web application developed using HTML, CSS, and JavaScript. Topic of questions are on the Hololive members and the user can select up to 4 possible choices for an answer. At the end, a score is displayed of how many the user got right and also allows the user to try again.
